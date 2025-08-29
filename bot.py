@@ -5,7 +5,10 @@ import os
 # Get token from environment variable
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
-# Define /start command
+if not BOT_TOKEN:
+    raise ValueError("No BOT_TOKEN found! Please set it in Render environment variables.")
+
+# /start command
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Hello! I’m your Telegram bot 🤖")
 
